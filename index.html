@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Михаил & Полина | Свадебное приглашение</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Каждый экран занимает всю высоту окна */
+        .screen {
+            min-height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Левая и правая половины на десктопе */
+        .half {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Специфичные фоны для правых половин */
+        .screen1 .right {
+            background-image: url('images/fon3.jpg');
+        }
+        .screen2 .left {
+            background-image: url('images/fon4.jpg');
+        }
+
+        /* Полупрозрачные подложки для читаемости */
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 32px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* Стили для первого экрана (имена) */
+        .names-title {
+            font-size: 4rem;
+            font-weight: bold;
+            line-height: 1.2;
+            color: #2c2c2c;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #5a5a5a;
+        }
+
+        /* Таймлайн (второй экран, левая половина) */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid #b0a69b;
+        }
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -39px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #b0a69b;
+            border-radius: 50%;
+        }
+        .timeline-time {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #5d3a2c;
+        }
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: #3a2a22;
+        }
+
+        /* Календарь (второй экран, правая половина) */
+        .calendar {
+            text-align: center;
+        }
+        .month {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .weekday {
+            font-weight: bold;
+            color: #b0a69b;
+        }
+        .calendar-day {
+            background: #f5f0ea;
+            padding: 8px;
+            border-radius: 12px;
+        }
+        .calendar-day.highlight {
+            background: #b0a69b;
+            color: white;
+        }
+        .invite-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* АДАПТАЦИЯ ПОД ТЕЛЕФОН */
+        @media (max-width: 768px) {
+            .screen {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .half {
+                min-height: 50vh;
+                background-size: cover;
+            }
+            /* На телефоне первый экран: сначала имена, потом фон fon3 */
+            .screen1 .left {
+                order: 1;
+            }
+            .screen1 .right {
+                order: 2;
+                background-image: url('images/fon3.jpg');
+                min-height: 50vh;
+            }
+            /* Второй экран: сначала фон fon4 (с расписанием), потом календарь */
+            .screen2 .left {
+                order: 1;
+                background-image: url('images/fon4.jpg');
+            }
+            .screen2 .right {
+                order: 2;
+            }
+            .content {
+                padding: 20px;
+            }
+            .names-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ПЕРВЫЙ ЭКРАН: имена слева, fon3 справа -->
+    <div class="screen screen1">
+        <div class="half left">
+            <div class="content">
+                <div class="names-title">Михаил<br>&<br>Полина</div>
+                <div class="subtitle">Приглашение на свадьбу</div>
+            </div>
+        </div>
+        <div class="half right">
+            <!-- Фон через CSS, содержимого нет, только изображение -->
+        </div>
+    </div>
+
+    <!-- ВТОРОЙ ЭКРАН: слева фон fon4 с таймлайном, справа календарь и текст -->
+    <div class="screen screen2">
+        <div class="half left">
+            <div class="content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">17:00</div>
+                        <div class="timeline-desc">Сбор гостей, фуршет</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">17:30</div>
+                        <div class="timeline-desc">Начало вечера</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">19:00</div>
+                        <div class="timeline-desc">Танцы, артисты</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">21:30</div>
+                        <div class="timeline-desc">Разрезание торта</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-time">22:30</div>
+                        <div class="timeline-desc">DJ, вечеринка</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="half right">
+            <div class="content">
+                <div class="calendar">
+                    <div class="month">АВГУСТ 2026</div>
+                    <div class="calendar-grid">
+                        <div class="weekday">ПН</div><div class="weekday">ВТ</div><div class="weekday">СР</div><div class="weekday">ЧТ</div><div class="weekday">ПТ</div><div class="weekday">СБ</div><div class="weekday">ВС</div>
+                        <!-- Упрощённая сетка для примера, можно позже подставить точные числа -->
+                        <div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day"></div><div class="calendar-day">1</div><div class="calendar-day">2</div>
+                        <div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div><div class="calendar-day">8</div><div class="calendar-day highlight">9</div>
+                        <!-- и так далее... -->
+                    </div>
+                    <div class="invite-text">
+                        <p>Дорогие гости!</p>
+                        <p>Приглашаем вас разделить с нами радость этого события.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
